@@ -10,6 +10,11 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             padding: 50px;
+            background: #f8c8dc; /* Fondo rosado */
+            background-image: url('ImagenA.jpg'); /* Imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
 
         h1 {
@@ -20,9 +25,10 @@
 
         p {
             font-size: 1.5em;
-            color: #333;
+            color: #f0f0f0;
         }
 
+        /* Animación de aparición */
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -48,19 +54,94 @@
         .button:hover {
             background-color: #ff4500;
         }
+
+        /* Estilo para el mensaje animado */
+        #message {
+            display: none;
+            font-size: 2em;
+            color: #ff69b4; /* Rosado bonito */
+            font-weight: bold;
+            animation: popUp 1s ease-out forwards;
+            margin-top: 30px;
+        }
+
+        /* Animación de aparición del mensaje */
+        @keyframes popUp {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Animación de corazones flotando */
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            color: red;
+            animation: floatHearts 3s infinite;
+            pointer-events: none;
+        }
+
+        /* Animación de los corazones flotando hacia arriba */
+        @keyframes floatHearts {
+            0% {
+                top: 100%;
+                opacity: 1;
+            }
+            100% {
+                top: -50%;
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <h1>¡Feliz Cumpleaños, [Nombre]!</h1>
+    <h1>¡Feliz Cumpleaños, Isabella!</h1>
     <p>Hoy es tu día, y quiero que sepas cuánto te aprecio.</p>
     <p>Haz clic en el botón para ver un mensaje especial para ti.</p>
 
     <button class="button" onclick="showMessage()">Ver mensaje</button>
 
+    <div id="message">
+        ¡Te deseo lo mejor en este nuevo año de vida! Que todos tus sueños se hagan realidad. <br>
+        PD: Te quiero un poquito más que mucho... 💖
+    </div>
+
+    <div id="hearts-container"></div>
+
     <script>
+        // Mostrar el mensaje con animación
         function showMessage() {
-            alert("¡Te deseo lo mejor en este nuevo año de vida! Que todos tus sueños se hagan realidad. 💖");
+            const message = document.getElementById("message");
+            message.style.display = "block";
+
+            // Generar corazones flotando
+            generateHearts();
+        }
+
+        // Función para generar los corazones
+        function generateHearts() {
+            const heartsContainer = document.getElementById("hearts-container");
+            const heartCount = 10; // Número de corazones que flotarán
+
+            for (let i = 0; i < heartCount; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "❤️";
+                heart.style.left = `${Math.random() * 100}%`; // Posición aleatoria
+                heart.style.animationDuration = `${Math.random() * 2 + 3}s`; // Duración aleatoria
+                heartsContainer.appendChild(heart);
+
+                // Eliminar el corazón después de que se complete la animación
+                setTimeout(() => {
+                    heartsContainer.removeChild(heart);
+                }, 5000); // Ajusta el tiempo para que los corazones desaparezcan después de flotar
+            }
         }
     </script>
 
