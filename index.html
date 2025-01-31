@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #ff6347;
+            font-size: 3em;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button {
+            background-color: #ff6347;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .button:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¡Feliz Cumpleaños, [Nombre]!</h1>
+    <p>Hoy es tu día, y quiero que sepas cuánto te aprecio.</p>
+    <p>Haz clic en el botón para ver un mensaje especial para ti.</p>
+
+    <button class="button" onclick="showMessage()">Ver mensaje</button>
+
+    <script>
+        function showMessage() {
+            alert("¡Te deseo lo mejor en este nuevo año de vida! Que todos tus sueños se hagan realidad. 💖");
+        }
+    </script>
+
+</body>
+</html>
